@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">AnimalFactsVolley</string>
+    <string name="button_text">Get new fact</string>
+    <string name="text">Fact should be here</string>
 </resources>
