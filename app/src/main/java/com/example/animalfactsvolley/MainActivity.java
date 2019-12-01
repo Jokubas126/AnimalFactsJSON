@@ -5,7 +5,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
-import android.widget.Button;
 import android.widget.TextView;
 
 import com.android.volley.*;
@@ -18,7 +17,7 @@ public class MainActivity extends AppCompatActivity {
     String objectRequestURL = "https://cat-fact.herokuapp.com/facts/random";
     String arrayRequestURL = "https://cat-fact.herokuapp.com/facts";
 
-    private RequestQueue requestQueue; // object to add the JSON request to queue
+    RequestQueue requestQueue; // object to add the JSON request to queue
     JsonArrayRequest jsonArrayRequest;
     JsonObjectRequest jsonObjectRequest;
     private TextView textView;
@@ -27,7 +26,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        requestQueue = Volley.newRequestQueue(MainActivity.this);
+        requestQueue = VolleySingleton.getInstance(this.getApplicationContext()).getRequestQueue();
 
         initiateJsonObjectResponse(); //take fact and display on app creation
 
@@ -55,7 +54,7 @@ public class MainActivity extends AppCompatActivity {
                 Log.d("Error: ", "onErrorResponse: " + error.getMessage());
             }
         });
-        requestQueue.add(jsonObjectRequest); //getting response from 1 JSON object
+        requestQueue.add(jsonObjectRequest);
     }
 
     //not useful here, but can stay for an example in case of upgrade later
@@ -72,6 +71,6 @@ public class MainActivity extends AppCompatActivity {
                 Log.d("Error: ", "onErrorResponse: ");
             }
         });
-        requestQueue.add(jsonArrayRequest); // getting response from all JSON array
+        requestQueue.add(jsonArrayRequest);
     }
 }
