@@ -57,7 +57,7 @@ public class MainActivity extends AppCompatActivity {
         requestQueue.add(jsonObjectRequest);
     }
 
-    //not useful here, but can stay for an example in case of upgrade later
+    //not useful here, but can stay in case of an upgrade later
     void initiateJsonArrayResponse() {
         jsonArrayRequest = new JsonArrayRequest(Request.Method.GET,
                 arrayRequestURL, null, new Response.Listener<JSONArray>() {
